@@ -72,6 +72,38 @@ The notebook expects a pandas DataFrame with at least the following columns:
 - `date_added`: Datetime column indicating when titles were added
 - `type`: String column with values "Movie" or "TV Show"
 
+## Dataset Details (netflix_titles.csv)
+
+This project uses the `netflix_titles.csv` dataset located in this folder. It contains metadata about Netflix titles with the following columns:
+
+- **show_id**: Unique identifier for each title
+- **type**: Content type ("Movie" or "TV Show")
+- **title**: Name of the title
+- **director**: Director(s) of the title (may be missing)
+- **cast**: Cast members (comma-separated; may be missing)
+- **country**: Country or countries of origin (may be missing)
+- **date_added**: Date the title was added to Netflix (string date)
+- **release_year**: Original release year (integer)
+- **rating**: Maturity rating (e.g., "PG-13", "TV-MA")
+- **duration**: Runtime for Movies (e.g., "90 min") or number of seasons for TV Shows (e.g., "2 Seasons")
+- **listed_in**: Genres/categories (comma-separated)
+- **description**: Short synopsis of the title
+
+### Sample Preview
+
+```csv
+show_id,type,title,director,cast,country,date_added,release_year,rating,duration,listed_in,description
+s1,Movie,Dick Johnson Is Dead,Kirsten Johnson,,United States,"September 25, 2021",2020,PG-13,90 min,Documentaries,"As her father nears the end of his life, filmmaker Kirsten Johnson stages his death in inventive and comical ways to help them both face the inevitable."
+s2,TV Show,Blood & Water,,"Ama Qamata, Khosi Ngema, Gail Mabalane, Thabang Molaba, Dillon Windvogel, Natasha Thahane, Arno Greeff, Xolile Tshabalala, Getmore Sithole, Cindy Mahlangu, Ryle De Morny, Greteli Fincham, Sello Maake Ka-Ncube, Odwa Gwanya, Mekaila Mathys, Sandi Schultz, Duane Williams, Shamilla Miller, Patrick Mofokeng",South Africa,"September 24, 2021",2021,TV-MA,2 Seasons,"International TV Shows, TV Dramas, TV Mysteries","After crossing paths at a party, a Cape Town teen sets out to prove whether a private-school swimming star is her sister who was abducted at birth."
+s3,TV Show,Ganglands,Julien Leclercq,"Sami Bouajila, Tracy Gotoas, Samuel Jouy, Nabiha Akkari, Sofia Lesaffre, Salim Kechiouche, Noureddine Farihi, Geert Van Rampelberg, Bakary Diombera",,"September 24, 2021",2021,TV-MA,1 Season,"Crime TV Shows, International TV Shows, TV Action & Adventure","To protect his family from a powerful drug lord, skilled thief Mehdi and his expert team of robbers are pulled into a violent and deadly turf war."
+```
+
+### Notes on Usage
+
+- Expect missing values in `director`, `cast`, and `country`. Handle with `fillna` or filtering as needed.
+- Parse `date_added` into datetime using pandas: `pd.to_datetime(df["date_added"])`.
+- Interpret `duration` by content type: minutes for Movies; seasons for TV Shows.
+
 ## Notebook Structure
 
 - **Data Preprocessing**: Handles datetime conversion and data cleaning
